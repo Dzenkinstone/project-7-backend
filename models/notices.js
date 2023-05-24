@@ -67,7 +67,7 @@ const addSchema = Joi.object({
   comments: Joi.string(),
 });
 
-const Notices = model("notices", noticesSchema);
+const Notices = model("no", noticesSchema);
 
 const schemas = {
   addSchema,

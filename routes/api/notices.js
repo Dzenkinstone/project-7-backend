@@ -11,7 +11,7 @@ const {
   getController,
   getByIdController,
   getByCategoryController,
-} = require("../../controllers/petsControllers");
+} = require("../../controllers/noticesControllers");
 
 router.get("/", getController);
 router.get("/notice/:noticeId", getByIdController);
