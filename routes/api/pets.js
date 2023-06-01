@@ -3,10 +3,6 @@ const router = express.Router();
 
 const { authentificate } = require("../../middlewares/authentificate");
 
-const { validateBody } = require("../../helpers/validateBody");
-
-const { schemas } = require("../../models/pets");
-
 const { isValidId } = require("../../middlewares/isValidId");
 
 //const ctrl = require("../../controllers/petsControllers");
@@ -22,12 +18,6 @@ router.get("/", authentificate, getPet);
 
 router.delete("/:petId", isValidId, authentificate, deletePetsId);
 
-router.post(
-  "/",
-  authentificate,
-  // validateBody(schemas.addSchema),
-  uploadCloud.single("image"),
-  addPet
-);
+router.post("/", authentificate, uploadCloud.single("image"), addPet);
 
 module.exports = router;

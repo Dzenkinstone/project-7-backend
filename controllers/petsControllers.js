@@ -20,12 +20,13 @@ const getPet = async (req, res) => {
 const addPet = async (req, res) => {
   const owner = req.user.id;
   const petData = req.body;
+
   const data = !!req.file
     ? { avatarURL: req.file.path, owner, ...petData }
     : { owner, ...petData };
 
   const newPet = await Pet.create(data);
-  res.json(201, newPet);
+  res.status(201).json(newPet);
 };
 
 const deletePetsId = async (req, res) => {

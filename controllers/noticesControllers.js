@@ -131,11 +131,12 @@ const getFavoritesController = async (req, res, next) => {
 };
 
 const addNoticeController = async (req, res, next) => {
+  const { category } = req.params;
   const owner = req.user.id;
   const noticeData = req.body;
   const data = !!req.file
-    ? { avatarURL: req.file.path, owner, ...noticeData }
-    : { owner, ...noticeData };
+    ? { avatarURL: req.file.path, owner, ...noticeData, category }
+    : { owner, ...noticeData, category };
 
   const newNotice = await Notices.create(data);
   res.status(200).json(newNotice);

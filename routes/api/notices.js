@@ -34,9 +34,9 @@ router.get("/favorites", authentificate, getFavoritesController);
 router.get("/favorites/search/:title", authentificate, getFavoriteBySearch);
 
 router.post(
-  "/",
+  "/addNotice/:category",
   authentificate,
-  validateBody(schemas.addSchema),
+  // validateBody(schemas.addSchema),
   uploadCloud.single("image"),
   addNoticeController
 );
