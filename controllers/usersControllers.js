@@ -130,6 +130,17 @@ const updateAvatar = async (req, res) => {
   res.json(201, newAvatar);
 };
 
+const deleteAvatar = async (req, res) => {
+  const { _id } = req.user;
+
+  const newAvatar = await User.findByIdAndUpdate(
+    _id,
+    { avatarURL: "" },
+    { new: true }
+  );
+  res.json(201, { user: newAvatar });
+};
+
 module.exports = {
   register: controlWrapper(register),
   login: controlWrapper(login),
@@ -137,4 +148,5 @@ module.exports = {
   logout: controlWrapper(logout),
   changeData: controlWrapper(changeData),
   updateAvatar: controlWrapper(updateAvatar),
+  deleteAvatar: controlWrapper(deleteAvatar),
 };

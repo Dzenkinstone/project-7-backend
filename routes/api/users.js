@@ -7,6 +7,7 @@ const {
   logout,
   changeData,
   updateAvatar,
+  deleteAvatar,
 } = require("../../controllers/usersControllers");
 const { userValidation } = require("../../middlewares/userValidation");
 const { authentificate } = require("../../middlewares/authentificate");
@@ -33,5 +34,7 @@ router.patch(
   uploadCloud.single("image"),
   updateAvatar
 );
+
+router.delete("/avatar", authentificate, deleteAvatar);
 
 module.exports = router;
